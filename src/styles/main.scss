@@ -1,0 +1,16 @@
+// ===============================
+//  main.scss — punto de entrada de estilos
+// ===============================
+// Orden importa: abstracts (solo herramientas) -> base -> layout.
+// Los .scss de componentes se importan dentro de cada componente .jsx.
+
+// 1. Abstracts (variables/mixins/functions ya se inyectan vía vite.config,
+//    pero se cargan aquí también para el árbol de main.scss)
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+@use 'abstracts/functions' as *;
+
+// 2. Base
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/global';

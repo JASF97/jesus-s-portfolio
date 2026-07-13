@@ -1,0 +1,41 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-4;
+  border-radius: $radius-sm;
+  font-family: $font-mono;
+  font-size: $fs-sm;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: transform $transition, background-color $transition,
+    border-color $transition, color $transition;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  // --- Variantes ---
+  &--primary {
+    background: $color-accent;
+    color: $color-bg;
+
+    &:hover {
+      background: $color-accent-soft;
+    }
+  }
+
+  &--ghost {
+    border: 1px solid $color-line;
+    color: $color-text;
+
+    &:hover {
+      border-color: $color-accent;
+      color: $color-accent;
+    }
+  }
+}

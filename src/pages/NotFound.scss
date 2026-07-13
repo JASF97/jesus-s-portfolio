@@ -1,0 +1,22 @@
+.not-found {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: $space-3;
+
+  &__code {
+    font-family: $font-mono;
+    font-size: $fs-2xl;
+    color: $color-accent;
+  }
+
+  &__title {
+    font-size: $fs-xl;
+  }
+
+  &__text {
+    margin-bottom: $space-3;
+  }
+}

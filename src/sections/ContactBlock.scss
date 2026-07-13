@@ -1,0 +1,81 @@
+.contact {
+  display: grid;
+  gap: $space-6;
+
+  @include mq(md) {
+    grid-template-columns: 1fr 1.2fr;
+    gap: $space-7;
+  }
+
+  &__intro p {
+    font-size: $fs-lg;
+    margin-bottom: $space-4;
+  }
+
+  &__socials {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    a {
+      font-family: $font-mono;
+      font-size: $fs-sm;
+      color: $color-text-muted;
+      transition: color $transition;
+
+      &:hover {
+        color: $color-accent;
+      }
+
+      &:focus-visible {
+        @include focus-ring;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    span {
+      font-family: $font-mono;
+      font-size: $fs-xs;
+      color: $color-text-muted;
+    }
+
+    input,
+    textarea {
+      font: inherit;
+      font-size: $fs-sm;
+      color: $color-text;
+      background: $color-bg-elev;
+      border: 1px solid $color-line;
+      border-radius: $radius-sm;
+      padding: $space-3;
+      resize: vertical;
+      transition: border-color $transition;
+
+      &:focus {
+        outline: none;
+        border-color: $color-accent;
+      }
+    }
+  }
+
+  &__success {
+    align-self: start;
+    font-family: $font-mono;
+    font-size: $fs-sm;
+    color: $color-accent;
+    padding: $space-4;
+    border: 1px solid rgba(240, 163, 64, 0.35);
+    border-radius: $radius;
+  }
+}

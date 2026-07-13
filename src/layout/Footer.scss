@@ -1,0 +1,44 @@
+.footer {
+  border-top: 1px solid $color-line;
+  padding-block: $space-5;
+  margin-top: $space-7;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    align-items: flex-start;
+
+    @include mq(md) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__note {
+    font-family: $font-mono;
+    font-size: $fs-xs;
+    margin: 0;
+  }
+
+  &__socials {
+    display: flex;
+    gap: $space-4;
+
+    a {
+      font-family: $font-mono;
+      font-size: $fs-xs;
+      color: $color-text-muted;
+      transition: color $transition;
+
+      &:hover {
+        color: $color-accent;
+      }
+
+      &:focus-visible {
+        @include focus-ring;
+      }
+    }
+  }
+}
