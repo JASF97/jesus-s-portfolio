@@ -21,6 +21,21 @@ body {
   background-attachment: fixed;
 }
 
+// Oculta el cursor nativo solo cuando hay puntero fino (mouse/trackpad),
+// para que en táctil siga funcionando con normalidad.
+@media (pointer: fine) {
+  body,
+  a,
+  button,
+  [role='button'],
+  input,
+  textarea,
+  select,
+  label {
+    cursor: none;
+  }
+}
+
 :focus-visible {
   outline: 2px solid $ring;
   outline-offset: 2px;

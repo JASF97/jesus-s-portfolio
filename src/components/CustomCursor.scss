@@ -1,0 +1,49 @@
+// ===============================
+//  CustomCursor — punto + anillo que persigue
+// ===============================
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  will-change: transform;
+
+  &.is-visible {
+    opacity: 1;
+  }
+}
+
+// Punto central — sigue al mouse al instante.
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: $brand;
+}
+
+// Anillo — persigue al punto con retardo (transform vía JS/rAF).
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid $brand;
+  background: rgba(40, 117, 232, 0.06);
+  // Suaviza tamaño/color en hover, no la posición (esa la maneja el rAF).
+  transition:
+    opacity 0.25s ease,
+    width 0.2s $ease,
+    height 0.2s $ease,
+    background-color 0.2s $ease,
+    border-color 0.2s $ease;
+
+  &.is-hovering {
+    width: 48px;
+    height: 48px;
+    background: rgba(40, 117, 232, 0.12);
+    border-color: $brand-deep;
+  }
+}
