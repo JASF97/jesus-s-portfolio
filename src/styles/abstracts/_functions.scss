@@ -2,8 +2,17 @@
 //  Funciones
 // ===============================
 @use 'sass:math';
+@use 'variables' as *;
 
 // Convierte px a rem asumiendo base 16px: rem(24) => 1.5rem
 @function rem($px, $base: 16) {
   @return math.div($px, $base) * 1rem;
+}
+
+// Devuelve la custom property de un token de color: token(brand) => var(--brand)
+@function token($name) {
+  @if not index($tokens, $name) {
+    @error "Token desconocido: `#{$name}`. Revisa $tokens en abstracts/variables.scss.";
+  }
+  @return var(--#{$name});
 }

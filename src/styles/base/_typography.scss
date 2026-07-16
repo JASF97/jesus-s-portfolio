@@ -4,19 +4,21 @@
 @use '../abstracts/variables' as *;
 
 body {
-  font-family: $font-body;
+  font-family: $font-sans;
   font-size: $fs-base;
   line-height: 1.65;
-  color: $color-text;
+  color: $ink;
 }
 
+// Titulares: sans pesada, tracking apretado (estética del capture)
 h1,
 h2,
 h3 {
-  font-family: $font-display;
-  font-weight: 600;
+  font-family: $font-sans;
+  font-weight: 800;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  color: $ink;
 }
 
 h1 { font-size: $fs-3xl; font-weight: 900; }
@@ -24,11 +26,11 @@ h2 { font-size: $fs-2xl; }
 h3 { font-size: $fs-xl; }
 
 p {
-  color: $color-text-muted;
+  color: $ink-soft;
   max-width: 60ch;
 }
 
 ::selection {
-  background: $color-accent;
-  color: $color-bg;
+  background: $brand;
+  color: $primary-foreground;
 }

@@ -21,21 +21,21 @@
 
   // --- Variantes ---
   &--primary {
-    background: $color-accent;
-    color: $color-bg;
+    background: $brand;
+    color: $background;
 
     &:hover {
-      background: $color-accent-soft;
+      background: $brand-deep;
     }
   }
 
   &--ghost {
-    border: 1px solid $color-line;
-    color: $color-text;
+    border: 1px solid $border;
+    color: $ink;
 
     &:hover {
-      border-color: $color-accent;
-      color: $color-accent;
+      border-color: $brand;
+      color: $brand;
     }
   }
 }

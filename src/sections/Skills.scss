@@ -8,7 +8,7 @@
 
   &__group-title {
     @include eyebrow;
-    color: $color-text-muted;
+    color: $ink-soft;
     margin-bottom: $space-3;
   }
 
@@ -31,7 +31,7 @@
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background: $color-accent;
+      background: $brand;
     }
   }
 }

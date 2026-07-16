@@ -20,11 +20,11 @@
     a {
       font-family: $font-mono;
       font-size: $fs-sm;
-      color: $color-text-muted;
+      color: $ink-soft;
       transition: color $transition;
 
       &:hover {
-        color: $color-accent;
+        color: $brand;
       }
 
       &:focus-visible {
@@ -47,16 +47,16 @@
     span {
       font-family: $font-mono;
       font-size: $fs-xs;
-      color: $color-text-muted;
+      color: $ink-soft;
     }
 
     input,
     textarea {
       font: inherit;
       font-size: $fs-sm;
-      color: $color-text;
-      background: $color-bg-elev;
-      border: 1px solid $color-line;
+      color: $ink;
+      background: $card;
+      border: 1px solid $border;
       border-radius: $radius-sm;
       padding: $space-3;
       resize: vertical;
@@ -64,7 +64,7 @@
 
       &:focus {
         outline: none;
-        border-color: $color-accent;
+        border-color: $brand;
       }
     }
   }
@@ -73,9 +73,9 @@
     align-self: start;
     font-family: $font-mono;
     font-size: $fs-sm;
-    color: $color-accent;
+    color: $brand;
     padding: $space-4;
-    border: 1px solid rgba(240, 163, 64, 0.35);
+    border: 1px solid rgba(41, 108, 216, 0.35);
     border-radius: $radius;
   }
 }

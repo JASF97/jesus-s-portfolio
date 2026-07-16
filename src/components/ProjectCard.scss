@@ -3,14 +3,14 @@
   flex-direction: column;
   gap: $space-3;
   padding: $space-4;
-  background: $color-bg-elev;
-  border: 1px solid $color-line;
+  background: $card;
+  border: 1px solid $border;
   border-radius: $radius;
   transition: transform $transition, border-color $transition;
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(240, 163, 64, 0.35);
+    border-color: rgba(41, 108, 216, 0.35);
   }
 
   &__head {
@@ -27,7 +27,7 @@
   &__year {
     font-family: $font-mono;
     font-size: $fs-xs;
-    color: $color-text-muted;
+    color: $ink-soft;
   }
 
   &__summary {
@@ -45,8 +45,8 @@
     font-family: $font-mono;
     font-size: $fs-xs;
     padding: $space-1 $space-2;
-    color: $color-accent-soft;
-    background: rgba(240, 163, 64, 0.08);
+    color: $brand-deep;
+    background: rgba(41, 108, 216, 0.08);
     border-radius: 999px;
   }
 
@@ -54,16 +54,16 @@
     display: flex;
     gap: $space-4;
     padding-top: $space-2;
-    border-top: 1px solid $color-line;
+    border-top: 1px solid $border;
 
     a {
       font-family: $font-mono;
       font-size: $fs-xs;
-      color: $color-text-muted;
+      color: $ink-soft;
       transition: color $transition;
 
       &:hover {
-        color: $color-accent;
+        color: $brand;
       }
 
       &:focus-visible {

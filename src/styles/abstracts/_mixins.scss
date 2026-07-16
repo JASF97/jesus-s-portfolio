@@ -30,7 +30,7 @@
 
 // Foco visible accesible
 @mixin focus-ring {
-  outline: 2px solid $color-accent;
+  outline: 2px solid $ring;
   outline-offset: 3px;
   border-radius: $radius-sm;
 }
@@ -41,5 +41,41 @@
   font-size: $fs-xs;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: $color-accent;
+  color: $brand;
+}
+
+// --- Nuevos utilitarios del sistema de tokens -------------------------------
+
+// Sombra suave para cards
+@mixin shadow-elegant {
+  box-shadow: $shadow-elegant;
+}
+
+// Glow azul para elementos destacados
+@mixin shadow-glow {
+  box-shadow: $shadow-glow;
+}
+
+// Gradiente azul para texto
+@mixin text-gradient-brand {
+  background: linear-gradient(135deg, $brand 0%, $brand-deep 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; // fallback
+}
+
+// Fondo de cuadrícula sutil
+@mixin bg-grid($size: 24px, $line-color: $hairline) {
+  background-image:
+    linear-gradient(to right, $line-color 1px, transparent 1px),
+    linear-gradient(to bottom, $line-color 1px, transparent 1px);
+  background-size: $size $size;
+}
+
+// Fuente monospace con ligaduras
+@mixin mono {
+  font-family: $font-mono;
+  font-feature-settings: "liga" 1, "calt" 1;
+  font-variant-ligatures: contextual;
 }

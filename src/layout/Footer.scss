@@ -1,5 +1,5 @@
 .footer {
-  border-top: 1px solid $color-line;
+  border-top: 1px solid $border;
   padding-block: $space-5;
   margin-top: $space-7;
 
@@ -29,11 +29,11 @@
     a {
       font-family: $font-mono;
       font-size: $fs-xs;
-      color: $color-text-muted;
+      color: $ink-soft;
       transition: color $transition;
 
       &:hover {
-        color: $color-accent;
+        color: $brand;
       }
 
       &:focus-visible {

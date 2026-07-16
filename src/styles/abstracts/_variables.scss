@@ -1,31 +1,244 @@
-// ===============================
-//  Variables globales
-// ===============================
+// =============================================================================
+//  Variables globales — Design tokens (React + SCSS, sin Tailwind)
+// -----------------------------------------------------------------------------
+//  Arquitectura:
+//    1. CSS Custom Properties en :root      → theming en runtime (dark mode)
+//    2. Variables SCSS ($token)             → alias ergonómicos a var(--token)
+//    3. Tokens estructurales (SCSS puro)    → espaciado, tipos, breakpoints…
+//    4. Mapa de tokens + función token()
+//
+//  Colores convertidos de oklch() a hex/rgba (el valor oklch queda como
+//  comentario de referencia). Estética: azul de marca sobre superficies claras.
+// =============================================================================
 
-// --- Paleta ---
-// Fondo azul-noche profundo con acento ámbar cálido.
-$color-bg:          #0e1420;   // fondo principal
-$color-bg-elev:     #161d2c;   // superficies elevadas (cards)
-$color-bg-soft:     #1e2738;   // hover / bordes suaves
-$color-text:        #e7ecf3;   // texto principal
-$color-text-muted:  #8a97ab;   // texto secundario
-$color-accent:      #f0a340;   // ámbar (acción / firma)
-$color-accent-soft: #f8c98a;   // ámbar claro
-$color-line:        rgba(255, 255, 255, 0.08);
 
-// --- Tipografía ---
-$font-display: 'Fraunces', Georgia, serif;
-$font-body:    'Inter', system-ui, -apple-system, sans-serif;
-$font-mono:    'JetBrains Mono', 'SFMono-Regular', monospace;
+// =============================================================================
+// 1. CUSTOM PROPERTIES — LIGHT (:root)
+// =============================================================================
 
-// Escala tipográfica (rem)
-$fs-xs:   0.8125rem;  // 13px — etiquetas mono
-$fs-sm:   0.9375rem;  // 15px
-$fs-base: 1.0625rem;  // 17px — cuerpo
-$fs-lg:   1.375rem;   // 22px
-$fs-xl:   2rem;       // 32px
-$fs-2xl:  3rem;       // 48px
-$fs-3xl:  clamp(2.75rem, 8vw, 5.5rem); // display hero
+:root {
+  // --- Superficies base ------------------------------------------------------
+  --background:        #FDFDFF;   // oklch(0.995 0.002 260) — casi blanco, tinte azul
+  --foreground:        #0A121F;   // oklch(0.18 0.03 260)   — azul-negro
+  --surface:           #F8FAFD;   // oklch(0.985 0.004 260) — superficie sutil
+  --surface-elevated:  #FFFFFF;   // oklch(1 0 0)           — blanco puro (cards)
+  --hairline:          #DADEE5;   // oklch(0.9 0.01 260)    — bordes finos / divisores
+
+  // --- Tinta / Texto ---------------------------------------------------------
+  --ink:       #0A121F;   // oklch(0.18 0.03 260) — texto fuerte
+  --ink-soft:  #474D58;   // oklch(0.42 0.02 260) — texto suave
+
+  // --- Marca (azul) ----------------------------------------------------------
+  --brand:       #2875E8;   // oklch(0.58 0.19 259) — azul principal (~#3B82F6)
+  --brand-deep:  #11338A;   // oklch(0.36 0.15 264) — azul profundo (~#1E3A8A)
+  --brand-soft:  #EAF2FF;   // oklch(0.96 0.03 259) — azul muy claro (backgrounds)
+
+  // --- Sistema shadcn --------------------------------------------------------
+  --card:                   #FFFFFF;
+  --card-foreground:        var(--ink);
+  --popover:                #FFFFFF;
+  --popover-foreground:     var(--ink);
+
+  --primary:                var(--brand-deep);
+  --primary-foreground:     #FCFCFC;   // oklch(0.99 0 0)
+
+  --secondary:              #F2F5FB;   // oklch(0.97 0.008 260)
+  --secondary-foreground:   var(--ink);
+
+  --muted:                  #F2F5FB;   // oklch(0.97 0.008 260)
+  --muted-foreground:       #5D646F;   // oklch(0.5 0.02 260)
+
+  --accent:                 var(--brand);
+  --accent-foreground:      #FCFCFC;   // oklch(0.99 0 0)
+
+  --destructive:            #EE3533;   // oklch(0.62 0.22 27) — rojo
+  --destructive-foreground: #FCFCFC;   // oklch(0.99 0 0)
+
+  --border:  #E1E5EA;   // oklch(0.92 0.008 260)
+  --input:   #E1E5EA;   // oklch(0.92 0.008 260)
+  --ring:    var(--brand);
+
+  // --- Charts ----------------------------------------------------------------
+  --chart-1: #2875E8;   // oklch(0.58 0.19 259) — azul
+  --chart-2: #00B7DD;   // oklch(0.72 0.14 220) — cian
+  --chart-3: #11338A;   // oklch(0.36 0.15 264) — azul profundo
+  --chart-4: #3ACED6;   // oklch(0.78 0.12 200) — celeste
+  --chart-5: #4A51C7;   // oklch(0.5 0.18 275)  — violeta
+
+  // --- Sidebar ---------------------------------------------------------------
+  --sidebar:                     #FBFCFE;   // oklch(0.99 0.003 260)
+  --sidebar-foreground:          var(--ink);
+  --sidebar-primary:             var(--brand-deep);
+  --sidebar-primary-foreground:  #FCFCFC;
+  --sidebar-accent:              #F2F5FB;
+  --sidebar-accent-foreground:   var(--ink);
+  --sidebar-border:              #E1E5EA;
+  --sidebar-ring:                var(--brand);
+
+  // --- Tipografía ------------------------------------------------------------
+  --font-sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+
+  // --- Radios ----------------------------------------------------------------
+  --radius:      0.75rem;
+  --radius-sm:   calc(var(--radius) - 4px);   // 0.5rem
+  --radius-md:   calc(var(--radius) - 2px);   // 0.625rem
+  --radius-lg:   var(--radius);               // 0.75rem
+  --radius-xl:   calc(var(--radius) + 4px);   // 1rem
+  --radius-2xl:  calc(var(--radius) + 8px);   // 1.25rem
+
+  // --- Sombras ---------------------------------------------------------------
+  // base sombra: oklch(0.2 0.05 260)  → rgb(8, 21, 44)
+  // base glow:   oklch(0.55 0.18 260) → rgb(41, 108, 216)
+  --shadow-elegant:
+    0 1px 2px rgba(8, 21, 44, 0.04),
+    0 8px 24px -8px rgba(8, 21, 44, 0.08);
+
+  --shadow-glow:
+    0 0 0 1px rgba(41, 108, 216, 0.15),
+    0 20px 60px -20px rgba(41, 108, 216, 0.35);
+}
+
+
+// =============================================================================
+// 2. CUSTOM PROPERTIES — DARK (.dark)
+// -----------------------------------------------------------------------------
+//  Enfocados en light por ahora. El bloque queda listo para activar el dark
+//  mode: descoméntalo y añade la clase `.dark` en <html>/<body>. Solo se
+//  redefinen los tokens que cambian; el resto hereda de :root en cascada.
+// =============================================================================
+
+/*
+.dark {
+  --background:        #070B14;   // oklch(0.15 0.02 260)
+  --foreground:        #F7F8FA;   // oklch(0.98 0.003 260)
+  --ink:               #F7F8FA;   // oklch(0.98 0.003 260)
+  --ink-soft:          #9DA5B1;   // oklch(0.72 0.02 260)
+  --surface:           #0B121D;   // oklch(0.18 0.025 260)
+  --surface-elevated:  #121B29;   // oklch(0.22 0.03 260)
+  --hairline:          #282E38;   // oklch(0.3 0.02 260)
+
+  --card:     #0F1621;   // oklch(0.2 0.025 260)
+  --popover:  #0F1621;   // oklch(0.2 0.025 260)
+
+  --primary:              var(--brand);
+  --primary-foreground:   #070B14;   // oklch(0.15 0.02 260)
+  --secondary:            #192230;   // oklch(0.25 0.03 260)
+  --secondary-foreground: var(--ink);
+  --muted:                #192230;   // oklch(0.25 0.03 260)
+  --muted-foreground:     #979FAB;   // oklch(0.7 0.02 260)
+  --accent:               var(--brand);
+  --accent-foreground:    #F8F8F8;   // oklch(0.98 0 0)
+
+  --border: rgba(255, 255, 255, 0.10);   // oklch(1 0 0 / 10%)
+  --input:  rgba(255, 255, 255, 0.15);   // oklch(1 0 0 / 15%)
+  --ring:   var(--brand);
+
+  --sidebar:                     #0A1019;   // oklch(0.17 0.022 260)
+  --sidebar-foreground:          var(--ink);
+  --sidebar-primary:             var(--brand);
+  --sidebar-primary-foreground:  #070B14;
+  --sidebar-accent:              #192230;
+  --sidebar-accent-foreground:   var(--ink);
+  --sidebar-border:              rgba(255, 255, 255, 0.10);
+  --sidebar-ring:                var(--brand);
+}
+*/
+
+
+// =============================================================================
+// 3. VARIABLES SCSS — alias ergonómicos
+// -----------------------------------------------------------------------------
+//  Apuntan a var(--token), así el dark mode seguirá funcionando en runtime
+//  pero en los parciales escribes $brand en lugar de var(--brand).
+// =============================================================================
+
+// Superficies
+$background:        var(--background);
+$foreground:        var(--foreground);
+$surface:           var(--surface);
+$surface-elevated:  var(--surface-elevated);
+$hairline:          var(--hairline);
+
+// Tinta
+$ink:       var(--ink);
+$ink-soft:  var(--ink-soft);
+
+// Marca
+$brand:       var(--brand);
+$brand-deep:  var(--brand-deep);
+$brand-soft:  var(--brand-soft);
+
+// Sistema shadcn
+$card:                   var(--card);
+$card-foreground:        var(--card-foreground);
+$popover:                var(--popover);
+$popover-foreground:     var(--popover-foreground);
+$primary:                var(--primary);
+$primary-foreground:     var(--primary-foreground);
+$secondary:              var(--secondary);
+$secondary-foreground:   var(--secondary-foreground);
+$muted:                  var(--muted);
+$muted-foreground:       var(--muted-foreground);
+$accent:                 var(--accent);
+$accent-foreground:      var(--accent-foreground);
+$destructive:            var(--destructive);
+$destructive-foreground: var(--destructive-foreground);
+$border:                 var(--border);
+$input:                  var(--input);
+$ring:                   var(--ring);
+
+// Charts
+$chart-1: var(--chart-1);
+$chart-2: var(--chart-2);
+$chart-3: var(--chart-3);
+$chart-4: var(--chart-4);
+$chart-5: var(--chart-5);
+
+// Sidebar
+$sidebar:                    var(--sidebar);
+$sidebar-foreground:         var(--sidebar-foreground);
+$sidebar-primary:            var(--sidebar-primary);
+$sidebar-primary-foreground: var(--sidebar-primary-foreground);
+$sidebar-accent:             var(--sidebar-accent);
+$sidebar-accent-foreground:  var(--sidebar-accent-foreground);
+$sidebar-border:             var(--sidebar-border);
+$sidebar-ring:               var(--sidebar-ring);
+
+// Tipografía (familias)
+$font-sans:    var(--font-sans);
+$font-mono:    var(--font-mono);
+$font-display: var(--font-display);
+
+// Radios (mapa shadcn)
+$radius:     var(--radius);
+$radius-sm:  var(--radius-sm);
+$radius-md:  var(--radius-md);
+$radius-lg:  var(--radius-lg);
+$radius-xl:  var(--radius-xl);
+$radius-2xl: var(--radius-2xl);
+
+// Sombras
+$shadow-elegant: var(--shadow-elegant);
+$shadow-glow:    var(--shadow-glow);
+
+
+// =============================================================================
+// 4. TOKENS ESTRUCTURALES — SCSS puro (no cambian en runtime)
+// -----------------------------------------------------------------------------
+//  Escalas de espaciado, tamaños tipográficos, breakpoints y transiciones.
+//  No forman parte del theme shadcn pero los componentes dependen de ellos.
+// =============================================================================
+
+// --- Escala tipográfica (rem) ---
+$fs-xs:   0.8125rem;   // 13px — etiquetas mono
+$fs-sm:   0.9375rem;   // 15px
+$fs-base: 1.0625rem;   // 17px — cuerpo
+$fs-lg:   1.375rem;    // 22px
+$fs-xl:   2rem;        // 32px
+$fs-2xl:  3rem;        // 48px
+$fs-3xl:  clamp(2.75rem, 8vw, 5.5rem);   // display hero
 
 // --- Espaciado ---
 $space-1: 0.25rem;
@@ -39,8 +252,6 @@ $space-8: 8rem;
 
 // --- Layout ---
 $container-max: 1120px;
-$radius:        14px;
-$radius-sm:     8px;
 
 // --- Breakpoints ---
 $bp-sm: 480px;
@@ -50,3 +261,25 @@ $bp-lg: 1024px;
 // --- Transiciones ---
 $ease: cubic-bezier(0.22, 1, 0.36, 1);
 $transition: 0.35s $ease;
+
+
+// =============================================================================
+// 5. MAPA DE TOKENS + FUNCIÓN HELPER
+// -----------------------------------------------------------------------------
+//  Para iterar tokens de color programáticamente. Uso: color: token(brand);
+//  La función token() vive en abstracts/functions.scss y consume este mapa.
+// =============================================================================
+
+$tokens: (
+  background, foreground, surface, surface-elevated, hairline,
+  ink, ink-soft,
+  brand, brand-deep, brand-soft,
+  card, card-foreground, popover, popover-foreground,
+  primary, primary-foreground, secondary, secondary-foreground,
+  muted, muted-foreground, accent, accent-foreground,
+  destructive, destructive-foreground,
+  border, input, ring,
+  chart-1, chart-2, chart-3, chart-4, chart-5,
+  sidebar, sidebar-foreground, sidebar-primary, sidebar-primary-foreground,
+  sidebar-accent, sidebar-accent-foreground, sidebar-border, sidebar-ring
+);
