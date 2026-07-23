@@ -4,7 +4,13 @@
   z-index: 50;
   background: rgba(253, 253, 255, 0.72);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid transparent;
+  transition: border-color $transition;
+
+  // El borde inferior solo aparece al hacer scroll.
+  &.is-scrolled {
+    border-bottom-color: $border;
+  }
 
   &__inner {
     display: flex;
@@ -63,35 +69,103 @@
 
     @include mq(md) {
       // Escritorio: fila en línea
-      position: static;
+      position: relative; // ancla para la píldora deslizante
       flex-direction: row;
-      gap: $space-5;
+      gap: $space-1;
       padding: 0;
       background: none;
       border: none;
       display: flex;
+      top: 0;
+    }
+  }
+
+  // Píldora única que se desliza entre la opción activa y la del hover.
+  // Solo en escritorio; en móvil el fondo lo pinta cada link.
+  &__pill {
+    display: none;
+
+    @include mq(md) {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-radius: 999px;
+      background: $brand-soft;
+      pointer-events: none;
+      z-index: 0;
+      // transform (translateX) y width se aplican inline desde React.
+    }
+
+    // La transición se activa tras el primer render (sin salto inicial).
+    // Curva con leve overshoot para emular el "spring".
+    &.is-animated {
+      transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.5, 1),
+        width 0.45s cubic-bezier(0.34, 1.4, 0.5, 1);
     }
   }
 
   &__link {
-    font-family: $font-mono;
-    font-size: $fs-sm;
+    position: relative; // por encima de la píldora
+    z-index: 1;
+    font-family: $font-sans;
+    font-size: $fs-xs;
+    font-weight: 500;
     color: $ink-soft;
-    padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
-    transition: color $transition, border-color $transition;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-1 $space-3;
+    border-radius: 999px;
+    transition: color 0.25s $ease, background-color 0.25s $ease;
 
-    &:hover {
+    // Móvil: el fondo lo pinta cada link (no hay píldora deslizante).
+    &:hover,
+    &.is-active {
       color: $ink;
+      background: $brand-soft;
     }
 
-    &.is-active {
-      color: $brand;
-      border-color: $brand;
+    // Escritorio: la píldora deslizante hace de fondo; el link solo cambia color.
+    @include mq(md) {
+      &:hover,
+      &.is-active {
+        background: transparent;
+      }
     }
 
     &:focus-visible {
       @include focus-ring;
     }
+  }
+
+  // CTA "Let's talk" a la derecha (solo desktop)
+  &__cta {
+    display: none;
+    font-size: $fs-xs;
+    font-weight: 500;
+    padding: $space-1 $space-3;
+    border: 1px solid $hairline;
+    border-radius: 999px;
+    box-shadow: $shadow-elegant;
+
+    @include mq(md) {
+      display: inline-flex;
+    }
+
+    &:hover {
+      color: $brand-deep;
+      border-color: color-mix(in srgb, var(--brand) 40%, transparent);
+    }
+  }
+
+  // Numeración de las opciones (01, 02, 03…)
+  &__num {
+    font-family: $font-mono;
+    font-size: 0.72em;
+    font-weight: 500;
+    color: $brand;
+    transition: color $transition;
   }
 }
