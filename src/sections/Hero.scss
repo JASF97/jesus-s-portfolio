@@ -5,37 +5,148 @@
     padding-block: $space-8 $space-7;
   }
 
-  &__eyebrow {
-    @include eyebrow;
+  // --- Chip de disponibilidad ------------------------------------------------
+  &__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: 0.375rem $space-3;
+    border: 1px solid $hairline;
+    border-radius: 999px;
+    background: $surface-elevated;
+    box-shadow: $shadow-elegant;
+    font-family: $font-mono;
+    font-size: $fs-xs;
+    letter-spacing: 0.02em;
     color: $ink-soft;
-    margin-bottom: $space-4;
+    margin-bottom: $space-5;
     animation: hero-in 0.6s $ease both;
+
+    &-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: $brand;
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand) 55%, transparent);
+      animation: hero-pulse 2.4s $ease infinite;
+    }
   }
 
+  // --- Título grande ---------------------------------------------------------
   &__title {
-    max-width: 16ch;
-    margin-bottom: $space-4;
+    font-size: clamp(2.75rem, 7vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin-bottom: $space-5;
     animation: hero-in 0.6s $ease 0.08s both;
   }
 
   &__accent {
-    color: $brand;
-    font-style: italic;
+    background: linear-gradient(
+      90deg,
+      $brand-deep 0%,
+      $brand 50%,
+      #57a8f7 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; // fallback
   }
 
+  // --- Texto descriptivo -----------------------------------------------------
   &__lead {
     font-size: $fs-lg;
-    max-width: 52ch;
+    max-width: 46ch;
     margin-bottom: $space-5;
     color: $ink-soft;
     animation: hero-in 0.6s $ease 0.16s both;
+
+    strong {
+      color: $ink;
+      font-weight: 600;
+    }
   }
 
+  // --- Acciones: botones + redes ---------------------------------------------
   &__actions {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: $space-3;
+    margin-bottom: $space-6;
     animation: hero-in 0.6s $ease 0.24s both;
+  }
+
+  // Botones del hero con forma de píldora.
+  &__btn.btn {
+    border-radius: 999px;
+    padding: 0.625rem $space-4;
+
+    // Primario: azul profundo (según capture).
+    &.hero__btn--primary {
+      background: $brand-deep;
+      color: $primary-foreground;
+
+      &:hover {
+        background: color-mix(in srgb, var(--brand-deep) 88%, black);
+      }
+    }
+  }
+
+  // Redes sociales (icon-only).
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-left: $space-2;
+  }
+
+  &__social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    color: $ink-soft;
+    transition: color $transition, background-color $transition;
+
+    &:hover {
+      color: $brand;
+      background: $brand-soft;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  // --- Estadísticas ----------------------------------------------------------
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-4 $space-3;
+    padding-top: $space-5;
+    border-top: 1px solid $hairline;
+    animation: hero-in 0.6s $ease 0.32s both;
+
+    @include mq(md) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__stat-label {
+    @include eyebrow;
+    color: $muted-foreground;
+    margin-bottom: $space-2;
+  }
+
+  &__stat-value {
+    font-size: $fs-lg;
+    font-weight: 700;
+    color: $ink;
+    line-height: 1.2;
   }
 }
 
@@ -47,5 +158,17 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes hero-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand) 55%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--brand) 0%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand) 0%, transparent);
   }
 }
