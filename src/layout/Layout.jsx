@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import CustomCursor from '@/components/CustomCursor'
 
 export default function Layout() {
+  const { t } = useTranslation()
   const { pathname } = useLocation()
 
   // Al navegar a otra ruta, vuelve al inicio de la página.
@@ -16,7 +18,7 @@ export default function Layout() {
     <>
       <CustomCursor />
       <a href="#main" className="skip-link">
-        Saltar al contenido
+        {t('common.skipLink')}
       </a>
       <Navbar />
       <main id="main">

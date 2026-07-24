@@ -1,14 +1,7 @@
+import { useTranslation, Trans } from "react-i18next";
 import Button from "@/components/Button";
 import { socials } from "@/data/site";
 import "./Hero.scss";
-
-// Estadísticas del hero (etiqueta + valor).
-const stats = [
-  { label: "Years shipping", value: "6+" },
-  { label: "Products in prod", value: "40+" },
-  { label: "Stack", value: "React · TS · Supabase" },
-  { label: "AI pairing", value: "Claude · Lovable" },
-];
 
 // Íconos SVG por red (según el label en data/site).
 const socialIcons = {
@@ -31,39 +24,45 @@ const socialIcons = {
 };
 
 export default function Hero() {
+  const { t } = useTranslation();
+
+  // Estadísticas del hero (etiqueta + valor) desde las traducciones.
+  const stats = [
+    { label: t("hero.stats.yearsLabel"), value: t("hero.stats.yearsValue") },
+    {
+      label: t("hero.stats.productsLabel"),
+      value: t("hero.stats.productsValue"),
+    },
+    { label: t("hero.stats.stackLabel"), value: t("hero.stats.stackValue") },
+    { label: t("hero.stats.aiLabel"), value: t("hero.stats.aiValue") },
+  ];
+
   return (
     <section className="hero container">
       {/* Chip de disponibilidad */}
       <p className="hero__chip">
         <span className="hero__chip-dot" aria-hidden="true" />
-        Available for new projects — Q3 2026
+        {t("hero.chip")}
       </p>
 
       {/* Título grande */}
       <h1 className="hero__title">
-        Jesus.
+        {t("hero.title.name")}
         <br />
-        <span className="hero__accent">Frontend Developer</span>
+        <span className="hero__accent">{t("hero.title.role")}</span>
         <br />
-        engineering
-        <br />
-        interfaces
-        <br />
-        worth remembering.
+        {t("hero.title.tail")}
       </h1>
 
       {/* Texto descriptivo */}
       <p className="hero__lead">
-        I build large-scale web applications with <strong>React</strong>,{" "}
-        <strong>TypeScript</strong> and <strong>Supabase</strong> — pairing
-        AI-assisted development with <strong>Claude</strong> and{" "}
-        <strong>Lovable</strong> to ship faster without dropping the craft.
+        <Trans i18nKey="hero.lead" components={{ b: <strong /> }} />
       </p>
 
       {/* Acciones: dos botones + redes */}
       <div className="hero__actions">
         <Button to="/projects" className="hero__btn hero__btn--primary">
-          View selected work
+          {t("hero.actions.primary")}
           <svg
             viewBox="0 0 24 24"
             width="16"
@@ -80,7 +79,7 @@ export default function Hero() {
         </Button>
 
         <Button to="/contact" variant="ghost" className="hero__btn">
-          Get in touch
+          {t("hero.actions.secondary")}
         </Button>
 
         <ul className="hero__socials">

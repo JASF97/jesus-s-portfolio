@@ -1,5 +1,9 @@
+import { useTranslation } from 'react-i18next'
 import ProjectsGrid from '@/sections/ProjectsGrid'
 
 export default function Projects() {
-  return <ProjectsGrid index="01 — Trabajo" title="Todos los proyectos" />
+  const { t } = useTranslation()
+  return (
+    <ProjectsGrid index={t('projects.allIndex')} title={t('projects.allTitle')} />
+  )
 }

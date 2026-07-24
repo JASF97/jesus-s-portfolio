@@ -1,25 +1,10 @@
-// Habilidades agrupadas por categoría.
-export const skills = [
-  {
-    group: 'Frontend',
-    items: ['React', 'TypeScript', 'Vite', 'SCSS / Sass', 'React Router'],
-  },
-  {
-    group: 'Herramientas',
-    items: ['Git', 'Figma', 'Vitest', 'Storybook'],
-  },
-  {
-    group: 'Bases',
-    items: ['HTML semántico', 'Accesibilidad (a11y)', 'Diseño responsive'],
-  },
-]
-
 // Enlaces de navegación (usados por el Navbar).
+// `key` apunta a la traducción en i18n (nav.<key>).
 export const navLinks = [
-  { to: '/', label: 'Inicio' },
-  { to: '/projects', label: 'Proyectos' },
-  { to: '/about', label: 'Sobre mí' },
-  { to: '/contact', label: 'Contacto' },
+  { to: '/', key: 'home' },
+  { to: '/projects', key: 'projects' },
+  { to: '/about', key: 'about' },
+  { to: '/contact', key: 'contact' },
 ]
 
 // Enlaces sociales (usados en Footer y Contact).

@@ -1,11 +1,14 @@
-import { skills } from '@/data/site'
+import { useTranslation } from 'react-i18next'
 import './Skills.scss'
 
 export default function Skills() {
+  const { t } = useTranslation()
+  const skills = t('skills.groups', { returnObjects: true })
+
   return (
     <section className="section container">
-      <span className="section__index">02 — Herramientas</span>
-      <h2 className="section__title">Con lo que trabajo</h2>
+      <span className="section__index">{t('skills.index')}</span>
+      <h2 className="section__title">{t('skills.title')}</h2>
 
       <div className="skills">
         {skills.map((cat) => (

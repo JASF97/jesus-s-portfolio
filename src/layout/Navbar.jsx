@@ -1,10 +1,13 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { navLinks } from "@/data/site";
 import Button from "@/components/Button";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import "./Navbar.scss";
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -61,18 +64,9 @@ export default function Navbar() {
           <span className="navbar__brand-mark">◆</span> Jesus.
         </NavLink>
 
-        <button
-          className="navbar__toggle"
-          aria-expanded={open}
-          aria-label="Abrir menú"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? "✕" : "☰"}
-        </button>
-
         <nav
           className={`navbar__nav ${open ? "is-open" : ""}`}
-          aria-label="Navegación principal"
+          aria-label={t("nav.ariaLabel")}
           onMouseLeave={() => setHovered(null)}
         >
           {/* Píldora única que se desliza entre la opción activa y la del hover */}
@@ -104,18 +98,29 @@ export default function Navbar() {
               <span className="navbar__num">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              {link.label}
+              {t(`nav.${link.key}`)}
             </NavLink>
           ))}
         </nav>
 
-        <Button
-          to="/contact"
-          className="navbar__cta"
-          onClick={() => setOpen(false)}
-        >
-          Let's talk →
-        </Button>
+        <div className="navbar__end">
+          <LanguageSwitcher />
+          <Button
+            to="/contact"
+            className="navbar__cta"
+            onClick={() => setOpen(false)}
+          >
+            {t("nav.cta")}
+          </Button>
+          <button
+            className="navbar__toggle"
+            aria-expanded={open}
+            aria-label={t("common.openMenu")}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
     </header>
   );

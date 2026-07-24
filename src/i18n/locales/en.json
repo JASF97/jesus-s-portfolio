@@ -1,0 +1,108 @@
+{
+  "common": {
+    "skipLink": "Skip to content",
+    "changeLanguage": "Change language",
+    "openMenu": "Open menu"
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Let's talk →",
+    "ariaLabel": "Main navigation"
+  },
+  "hero": {
+    "chip": "Available for new projects — Q3 2026",
+    "title": {
+      "name": "Jesus.",
+      "role": "Frontend Developer",
+      "tail": "engineering interfaces worth remembering."
+    },
+    "lead": "I build large-scale web applications with <b>React</b>, <b>TypeScript</b> and <b>Supabase</b> — pairing AI-assisted development with <b>Claude</b> and <b>Lovable</b> to ship faster without dropping the craft.",
+    "actions": {
+      "primary": "View selected work",
+      "secondary": "Get in touch"
+    },
+    "stats": {
+      "yearsLabel": "Years shipping",
+      "yearsValue": "6+",
+      "productsLabel": "Products in prod",
+      "productsValue": "40+",
+      "stackLabel": "Stack",
+      "stackValue": "React · TS · Supabase",
+      "aiLabel": "AI pairing",
+      "aiValue": "Claude · Lovable"
+    }
+  },
+  "about": {
+    "index": "01 — About",
+    "title": "Hi, I'm Your Name",
+    "p1": "Frontend developer focused on React and on building interfaces that feel fast and well-crafted. I'm drawn to the place where design and code meet: consistent style systems, reusable components and accessible experiences.",
+    "p2": "I've worked on e-commerce, data dashboards and content sites. Away from the keyboard, you'll find me reading about typography or having coffee while exploring new tools."
+  },
+  "skills": {
+    "index": "02 — Tools",
+    "title": "What I work with",
+    "groups": [
+      {
+        "group": "Frontend",
+        "items": ["React", "TypeScript", "Vite", "SCSS / Sass", "React Router"]
+      },
+      {
+        "group": "Tools",
+        "items": ["Git", "Figma", "Vitest", "Storybook"]
+      },
+      {
+        "group": "Foundations",
+        "items": ["Semantic HTML", "Accessibility (a11y)", "Responsive design"]
+      }
+    ]
+  },
+  "projects": {
+    "featuredTitle": "Featured projects",
+    "defaultIndex": "01 — Work",
+    "defaultTitle": "Selected projects",
+    "allIndex": "01 — Work",
+    "allTitle": "All projects",
+    "items": {
+      "ecomm": {
+        "title": "Modular store",
+        "summary": "E-commerce with a persistent cart, real-time filters and a multi-step checkout."
+      },
+      "dashboard": {
+        "title": "Metrics dashboard",
+        "summary": "Analytics dashboard with interactive charts and CSV report exports."
+      },
+      "blog": {
+        "title": "Headless blog",
+        "summary": "Blog with a headless CMS, Markdown rendering and an optimized reading mode."
+      }
+    },
+    "card": {
+      "demo": "View demo ↗",
+      "code": "Code ↗"
+    }
+  },
+  "contact": {
+    "index": "03 — Contact",
+    "title": "Let's work together",
+    "intro": "Got a project in mind? Write me and I'll get back to you within 48 hours.",
+    "success": "Message sent! I'll get back to you soon.",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message"
+    },
+    "submit": "Send message"
+  },
+  "footer": {
+    "note": "© {{year}} Your Name — Built with React, Vite and SCSS."
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "text": "The page you're looking for doesn't exist or was moved.",
+    "back": "Back to home"
+  }
+}

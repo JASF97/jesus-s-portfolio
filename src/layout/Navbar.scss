@@ -140,6 +140,13 @@
     }
   }
 
+  // Bloque derecho: selector de idioma + CTA.
+  &__end {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
   // CTA "Let's talk" a la derecha (solo desktop)
   &__cta {
     display: none;

@@ -78,19 +78,46 @@
     animation: hero-in 0.6s $ease 0.24s both;
   }
 
-  // Botones del hero con forma de píldora.
+  // Botones del hero: contenedores sólidos con forma de píldora.
   &__btn.btn {
+    font-family: $font-sans;
+    font-size: $fs-sm;
+    font-weight: 600;
     border-radius: 999px;
-    padding: 0.625rem $space-4;
+    padding: 0.7rem 1.3rem;
+    border: 1px solid transparent;
+    transition: transform $transition, background-color $transition,
+      border-color $transition, color $transition;
 
-    // Primario: azul profundo (según capture).
+    // Primario: azul profundo relleno (según capture).
     &.hero__btn--primary {
       background: $brand-deep;
       color: $primary-foreground;
+      box-shadow: $shadow-elegant;
 
       &:hover {
         background: color-mix(in srgb, var(--brand-deep) 88%, black);
+        transform: translateY(-1px);
       }
+    }
+
+    // Secundario: blanco con borde y sombra, como el CTA "Let's talk".
+    &.btn--ghost {
+      background: $surface-elevated;
+      border-color: $hairline;
+      box-shadow: $shadow-elegant;
+      color: $ink;
+
+      &:hover {
+        color: $brand-deep;
+        border-color: color-mix(in srgb, var(--brand) 40%, transparent);
+        background: $surface-elevated;
+        transform: translateY(-1px);
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
     }
   }
 

@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import Button from '@/components/Button'
 import { socials } from '@/data/site'
 import './ContactBlock.scss'
 
 export default function ContactBlock() {
+  const { t } = useTranslation()
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
 
@@ -18,15 +20,12 @@ export default function ContactBlock() {
 
   return (
     <section className="section container">
-      <span className="section__index">03 — Contacto</span>
-      <h2 className="section__title">Trabajemos juntos</h2>
+      <span className="section__index">{t('contact.index')}</span>
+      <h2 className="section__title">{t('contact.title')}</h2>
 
       <div className="contact">
         <div className="contact__intro">
-          <p>
-            ¿Tienes un proyecto en mente? Escríbeme y te respondo en menos de 48
-            horas.
-          </p>
+          <p>{t('contact.intro')}</p>
           <ul className="contact__socials">
             {socials.map((s) => (
               <li key={s.label}>
@@ -40,12 +39,12 @@ export default function ContactBlock() {
 
         {sent ? (
           <p className="contact__success" role="status">
-            ¡Mensaje enviado! Te responderé pronto.
+            {t('contact.success')}
           </p>
         ) : (
           <form className="contact__form" onSubmit={handleSubmit}>
             <label className="contact__field">
-              <span>Nombre</span>
+              <span>{t('contact.fields.name')}</span>
               <input
                 name="name"
                 value={form.name}
@@ -54,7 +53,7 @@ export default function ContactBlock() {
               />
             </label>
             <label className="contact__field">
-              <span>Correo</span>
+              <span>{t('contact.fields.email')}</span>
               <input
                 type="email"
                 name="email"
@@ -64,7 +63,7 @@ export default function ContactBlock() {
               />
             </label>
             <label className="contact__field">
-              <span>Mensaje</span>
+              <span>{t('contact.fields.message')}</span>
               <textarea
                 name="message"
                 rows="4"
@@ -73,7 +72,7 @@ export default function ContactBlock() {
                 required
               />
             </label>
-            <Button type="submit">Enviar mensaje</Button>
+            <Button type="submit">{t('contact.submit')}</Button>
           </form>
         )}
       </div>

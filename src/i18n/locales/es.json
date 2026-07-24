@@ -1,0 +1,108 @@
+{
+  "common": {
+    "skipLink": "Saltar al contenido",
+    "changeLanguage": "Cambiar idioma",
+    "openMenu": "Abrir menú"
+  },
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "cta": "Hablemos →",
+    "ariaLabel": "Navegación principal"
+  },
+  "hero": {
+    "chip": "Disponible para nuevos proyectos — Q3 2026",
+    "title": {
+      "name": "Jesus.",
+      "role": "Desarrollador Frontend",
+      "tail": "creando interfaces que vale la pena recordar."
+    },
+    "lead": "Construyo aplicaciones web a gran escala con <b>React</b>, <b>TypeScript</b> y <b>Supabase</b> — combinando desarrollo asistido por IA con <b>Claude</b> y <b>Lovable</b> para entregar más rápido sin descuidar el detalle.",
+    "actions": {
+      "primary": "Ver trabajo seleccionado",
+      "secondary": "Contáctame"
+    },
+    "stats": {
+      "yearsLabel": "Años entregando",
+      "yearsValue": "6+",
+      "productsLabel": "Productos en producción",
+      "productsValue": "40+",
+      "stackLabel": "Stack",
+      "stackValue": "React · TS · Supabase",
+      "aiLabel": "Dupla con IA",
+      "aiValue": "Claude · Lovable"
+    }
+  },
+  "about": {
+    "index": "01 — Sobre mí",
+    "title": "Hola, soy Tu Nombre",
+    "p1": "Desarrollador frontend con foco en React y en construir interfaces que se sienten rápidas y cuidadas. Me interesa el punto donde el diseño y el código se encuentran: sistemas de estilos consistentes, componentes reutilizables y experiencias accesibles.",
+    "p2": "He trabajado en e-commerce, dashboards de datos y sitios de contenido. Fuera del teclado, me vas a encontrar leyendo sobre tipografía o tomando café mientras exploro nuevas herramientas."
+  },
+  "skills": {
+    "index": "02 — Herramientas",
+    "title": "Con lo que trabajo",
+    "groups": [
+      {
+        "group": "Frontend",
+        "items": ["React", "TypeScript", "Vite", "SCSS / Sass", "React Router"]
+      },
+      {
+        "group": "Herramientas",
+        "items": ["Git", "Figma", "Vitest", "Storybook"]
+      },
+      {
+        "group": "Bases",
+        "items": ["HTML semántico", "Accesibilidad (a11y)", "Diseño responsive"]
+      }
+    ]
+  },
+  "projects": {
+    "featuredTitle": "Proyectos destacados",
+    "defaultIndex": "01 — Trabajo",
+    "defaultTitle": "Proyectos seleccionados",
+    "allIndex": "01 — Trabajo",
+    "allTitle": "Todos los proyectos",
+    "items": {
+      "ecomm": {
+        "title": "Tienda modular",
+        "summary": "E-commerce con carrito persistente, filtros en tiempo real y checkout en varios pasos."
+      },
+      "dashboard": {
+        "title": "Panel de métricas",
+        "summary": "Dashboard analítico con gráficas interactivas y exportación de reportes en CSV."
+      },
+      "blog": {
+        "title": "Blog headless",
+        "summary": "Blog con CMS headless, renderizado de Markdown y modo lectura optimizado."
+      }
+    },
+    "card": {
+      "demo": "Ver demo ↗",
+      "code": "Código ↗"
+    }
+  },
+  "contact": {
+    "index": "03 — Contacto",
+    "title": "Trabajemos juntos",
+    "intro": "¿Tienes un proyecto en mente? Escríbeme y te respondo en menos de 48 horas.",
+    "success": "¡Mensaje enviado! Te responderé pronto.",
+    "fields": {
+      "name": "Nombre",
+      "email": "Correo",
+      "message": "Mensaje"
+    },
+    "submit": "Enviar mensaje"
+  },
+  "footer": {
+    "note": "© {{year}} Tu Nombre — Hecho con React, Vite y SCSS."
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La ruta que buscas no existe o fue movida.",
+    "back": "Volver al inicio"
+  }
+}
